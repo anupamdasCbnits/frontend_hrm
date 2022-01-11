@@ -1,5 +1,5 @@
 import React, {useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 
@@ -65,7 +65,7 @@ const Login=()=>{
       }
     }
   return(
-    <div className="container-sm" style={{padding:"200px"}}>
+  <div className="container-sm" style={{padding:"200px"}}>
   <div className="mb-3">
     <label  className="form-label">Employee Code</label>
     <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="employeecode" value={loginForm.employeecode} onChange={handleInput} style={{width:"350px"}}/>
@@ -76,6 +76,8 @@ const Login=()=>{
     <input type="password" className="form-control" id="exampleInputPassword1" name="password" value={loginForm.password} onChange={handleInput} style={{width:"350px"}}/>
     <small style={{color:"red"}}>{error.passwordValid}</small>
   </div>
+  <Link to="/forgetpass">Forget Password</Link>
+  <br/><br/>
   <input type="submit" value="Login" style={{width:"150px"}}  className="btn btn-primary" onClick={handleSubmit}/>
 </div>
   )

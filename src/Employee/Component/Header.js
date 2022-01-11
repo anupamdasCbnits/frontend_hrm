@@ -28,7 +28,9 @@ const Header = () =>{
       <li className="nav-item">
         <NavLink className="nav-link" aria-current="page" to="/" >Home</NavLink>
       </li>
-      
+      <li className="nav-item">
+        <NavLink className="nav-link" aria-current="page" to="/viewprofile" >View Profile</NavLink>
+      </li>
       <li className="nav-item">
         <NavLink className="nav-link" to="/list_employee">List Employee</NavLink>
       </li>
@@ -56,6 +58,9 @@ const Header = () =>{
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
       <li className="nav-item">
         <NavLink className="nav-link" aria-current="page" to="/" >Home</NavLink>
+      </li>
+      <li className="nav-item">
+        <NavLink className="nav-link" aria-current="page" to="/viewprofile" >View Profile</NavLink>
       </li>
     </ul>
       <button className="btn btn-danger" type="submit" onClick={logoutHabdle}>Logout</button>
