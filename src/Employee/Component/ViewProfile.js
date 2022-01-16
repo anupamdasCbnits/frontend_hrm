@@ -49,7 +49,7 @@ const ViewProfile =()=>{
         <p>Email: {empData.email}</p>
         <p>Ph Number: {empData.phno}</p>
         <b/>
-        <Link type="button" class="btn btn-success" to={"/updateprofile"}>Update</Link>
+        <Link type="button" className="btn btn-success" to={"/updateprofile"}>Update</Link>
         </div>
         </>
         )
