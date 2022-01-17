@@ -35,12 +35,21 @@ const ViewProfile =()=>{
             })
         })
       }, []);
-
+    if (empData.first_name===""){
+        return(
+            <>
+            <Header/>
+            <div class="alert alert-primary" role="alert">
+                your token is invalid.
+            </div>
+            </>
+        )
+    }
     return(
         <>
         <Header/>
         <div className="show_emp">
-        <h2>Employee Data</h2><br/>
+        <h2>Profile</h2><br/>
         <p>Employee Code: {empData.employee_code}</p>
         <p>Name : { empData.first_name } {empData.last_name}</p>
         <p>Country : { empData.country_name }</p>

@@ -15,7 +15,7 @@ const ListEmployee =()=>{
     const [search,setSearch] = useState({
       search : ""
     })
-    useEffect(() => {
+    useEffect(  () => {
         var searchData = new FormData()
         searchData.append('searchdata',"")
         searchData.append('lower',pagination.previous)
@@ -61,6 +61,9 @@ const ListEmployee =()=>{
         }
 
         const handleSubmit=(event) =>{ 
+          setEmpDta({
+            empList:[]
+          })
           var searchData = new FormData()
           searchData.append('searchdata',search.search)
           searchData.append('lower',pagination.previous)
@@ -95,23 +98,36 @@ const ListEmployee =()=>{
         event.preventDefault();
         
         }
-    
+    if(empData.empList.length === 0){
+      return(
+      <>  
+       <Header/>
+       <div class="d-flex" style={{margin:"30px"}}>
+        <input autocomplete="off" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" value={search.search} onChange={handleInput} style={{width:"50%"}}/>
+        <button class="btn btn-outline-primary" type="button" onClick={handleSubmit} >Search</button>
+      </div>
+       <div class="alert alert-primary" role="alert">
+          no employee found
+        </div>
+      </>
+      )
+    }
     return(
     <>
     <Header/>
     <div className="container-sm">
     <div class="d-flex" style={{margin:"30px"}}>
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" value={search.search} onChange={handleInput} style={{width:"50%"}}/>
-        <button class="btn btn-outline-info" type="button" onClick={handleSubmit} >Search</button>
+        <button class="btn btn-outline-primary" type="button" onClick={handleSubmit} >Search</button>
       </div>
-    <div className="row row-cols-1 row-cols-md-4 g-5 my-3">
+    <div className="row row-cols-1 row-cols-md-4 g-5 mx-3" >
       {
         empData.empList.map((item)=>
         <div className="col">
-        <div className="card text-dark bg-light border-info mb-3">
-        <div className="card-header text-info"><b>{item.employee_role.toUpperCase()}</b></div>
+        <div className="card text-dark bg-light border-primary mb-3">
+        <div className="card-header text-primary"><b>{item.employee_role.toUpperCase()}</b></div>
           <Link className="card-body" to={"/show_employee/"+item.employee_id}>
-            <h5 className="card-title text-info">{item.first_name.toUpperCase()} {item.last_name.toUpperCase()}</h5>
+            <h5 className="card-title">{item.first_name.toUpperCase()} {item.last_name.toUpperCase()}</h5>
             <p className="card-title">Country : {item.country_name}</p>
             <p className="card-text">Employee Code : {item.employee_code}</p>
           </Link>
