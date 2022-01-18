@@ -16,8 +16,7 @@ const ListEmployee =()=>{
       search : ""
     })
     useEffect(  () => {
-        var searchData = new FormData()
-        axios.get(`http://127.0.0.1:5000/employee/list/""/${pagination.previous}/${pagination.next}`,{headers:{
+        axios.get(`http://127.0.0.1:5000/employee/""/${pagination.previous}/${pagination.next}`,{headers:{
         'x-access-token': localStorage.getItem('token')
         }}).then(data => {
           console.log(data.data)
@@ -61,12 +60,7 @@ const ListEmployee =()=>{
           setEmpDta({
             empList:[]
           })
-          var searchData = new FormData()
-          searchData.append('searchdata',search.search)
-          searchData.append('lower',pagination.previous)
-          searchData.append('upper',pagination.next)
-          console.log("ok")
-          axios.get(`http://127.0.0.1:5000/employee/list/${search.search}/${pagination.previous}/${pagination.next}`,{headers:{
+          axios.get(`http://127.0.0.1:5000/employee/${search.search}/${pagination.previous}/${pagination.next}`,{headers:{
         'x-access-token': localStorage.getItem('token')
         }}).then(data => {
           console.log(data.data)
