@@ -35,9 +35,11 @@ const ForgetPass =()=>{
           alert("wrong employee code")
         });
             
-            
         }
         event.preventDefault();
+    }
+    const handleCancel = () =>{
+        navigate('/login')
     }
     return(
         <>
@@ -45,7 +47,7 @@ const ForgetPass =()=>{
             <label  className="form-label">Enter employee code or ph no or email id : </label>
             <input type="text" className="form-control" id="exampleInputPassword1" name="auth" style={{width:"350px"}} value={otpForm.auth} onChange={handleInput}/>
             <small style={{color:"red"}}>{err.Errauth}</small>
-            <br/><input type="submit" value="Submit" style={{width:"150px"}}  className="btn btn-primary" onClick={handleSubmit} />
+            <br/><input type="button" value="cancel" style={{width:"150px"}}  className="btn btn-danger" onClick={handleCancel} />  <input type="submit" value="Submit" style={{width:"150px"}}  className="btn btn-primary" onClick={handleSubmit} />
         </div>
         </>)
 

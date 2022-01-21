@@ -16,11 +16,7 @@ const ListEmployee =()=>{
       search : ""
     })
     useEffect(  () => {
-        var searchData = new FormData()
-        searchData.append('searchdata',"")
-        searchData.append('lower',pagination.previous)
-        searchData.append('upper',pagination.next)
-        axios.post("http://127.0.0.1:5000/employee/list",searchData,{headers:{
+        axios.get(`http://127.0.0.1:5000/employee/""/${pagination.previous}/${pagination.next}`,{headers:{
         'x-access-token': localStorage.getItem('token')
         }}).then(data => {
           console.log(data.data)
@@ -64,12 +60,7 @@ const ListEmployee =()=>{
           setEmpDta({
             empList:[]
           })
-          var searchData = new FormData()
-          searchData.append('searchdata',search.search)
-          searchData.append('lower',pagination.previous)
-          searchData.append('upper',pagination.next)
-          console.log("ok")
-          axios.post("http://127.0.0.1:5000/employee/list",searchData,{headers:{
+          axios.get(`http://127.0.0.1:5000/employee/${search.search}/${pagination.previous}/${pagination.next}`,{headers:{
         'x-access-token': localStorage.getItem('token')
         }}).then(data => {
           console.log(data.data)
@@ -102,12 +93,19 @@ const ListEmployee =()=>{
       return(
       <>  
        <Header/>
+       <div className="container-sm">
        <div class="d-flex" style={{margin:"30px"}}>
         <input autocomplete="off" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" value={search.search} onChange={handleInput} style={{width:"50%"}}/>
         <button class="btn btn-outline-primary" type="button" onClick={handleSubmit} >Search</button>
       </div>
        <div class="alert alert-primary" role="alert">
           no employee found
+        </div>
+        <br/><br/>
+        <div className="d-flex justify-content-between">
+          <button className="btn btn-primary" onClick={()=>{Setpagination({previous:pagination.previous-4,next: pagination.next-4})}}>Previous</button>
+            <button className="btn btn-primary" onClick={()=>{Setpagination({previous:pagination.previous+4,next:pagination.next+4})}}>Next</button>
+        </div>
         </div>
       </>
       )
@@ -142,8 +140,6 @@ const ListEmployee =()=>{
       <button className="btn btn-primary" onClick={()=>{Setpagination({previous:pagination.previous+4,next:pagination.next+4})}}>Next</button>
     </div>
     </div>
-   
-    
     </>
     
     )

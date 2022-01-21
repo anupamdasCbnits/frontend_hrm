@@ -2,8 +2,10 @@ import React ,{useEffect} from "react";
 import { Link, useParams } from "react-router-dom";
 import Header from "../Component/Header"
 import "../Css/DeleteEmp.css"
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 const DeleteEmp = () =>{
+    const navigate = useNavigate()
     const { employee_id } = useParams();
     useEffect(() => {
         axios.delete(`http://127.0.0.1:5000/employee/${employee_id}`,{headers:{
@@ -15,6 +17,10 @@ const DeleteEmp = () =>{
             console.log(error);
           });
     }, [employee_id])
+    setTimeout(() => {
+        navigate('/')
+    }, 300)
+
     return (
         <>
         <Header/>
