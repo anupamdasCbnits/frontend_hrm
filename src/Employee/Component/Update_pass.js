@@ -53,6 +53,9 @@ const UpdatePass =()=>{
             });
         }
     }
+    const handleCancel = () =>{
+        navigate('/login')
+    }
     return(
         <>
             <div className="container-sm" style={{padding:"200px"}}>
@@ -71,7 +74,7 @@ const UpdatePass =()=>{
                 <input type="password" className="form-control" id="exampleInputPassword1" name="password2" value={updatepass.password2} onChange={handleInput} style={{width:"350px"}}/>
                 <small style={{color:"red"}}>{err.Errpassword2}</small>
             </div>
-            <input type="submit" value="Change Password" style={{width:"150px"}}  className="btn btn-primary" onClick={handleSubmit}/>
+            <input type="button" value="cancel" style={{width:"150px"}}  className="btn btn-danger" onClick={handleCancel} /> <input type="submit" value="Change Password" style={{width:"150px"}}  className="btn btn-primary" onClick={handleSubmit}/>
             </div>
         </>
     )

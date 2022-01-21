@@ -93,12 +93,19 @@ const ListEmployee =()=>{
       return(
       <>  
        <Header/>
+       <div className="container-sm">
        <div class="d-flex" style={{margin:"30px"}}>
         <input autocomplete="off" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" value={search.search} onChange={handleInput} style={{width:"50%"}}/>
         <button class="btn btn-outline-primary" type="button" onClick={handleSubmit} >Search</button>
       </div>
        <div class="alert alert-primary" role="alert">
           no employee found
+        </div>
+        <br/><br/>
+        <div className="d-flex justify-content-between">
+          <button className="btn btn-primary" onClick={()=>{Setpagination({previous:pagination.previous-4,next: pagination.next-4})}}>Previous</button>
+            <button className="btn btn-primary" onClick={()=>{Setpagination({previous:pagination.previous+4,next:pagination.next+4})}}>Next</button>
+        </div>
         </div>
       </>
       )
@@ -133,8 +140,6 @@ const ListEmployee =()=>{
       <button className="btn btn-primary" onClick={()=>{Setpagination({previous:pagination.previous+4,next:pagination.next+4})}}>Next</button>
     </div>
     </div>
-   
-    
     </>
     
     )

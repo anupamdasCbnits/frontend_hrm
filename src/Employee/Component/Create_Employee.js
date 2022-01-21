@@ -3,6 +3,7 @@ import Header from "../Component/Header"
 import "../Css/CreateEmp.css"
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import validator from 'validator'
 const CreateEmployee = () =>{
 
     const [createEmployee, setCreateEmployee] = useState({
@@ -24,6 +25,7 @@ const CreateEmployee = () =>{
         Erremployee_role : "",
         Erremployee_code : "",
         Erremail : "",
+        Validmail:"",
         Errphno : "",
         Errpassword : "",
         Errpassword2 : "",
@@ -72,14 +74,19 @@ const CreateEmployee = () =>{
                 Erremail:"* enter email id",
             })
           }
+          else if(!validator.isEmail(createEmployee.email)){
+            setError({
+                Validmail:"it is not valid email",
+            })
+          }
           else if(createEmployee.password.length ===0){
             setError({
-                Errpassword:"* enter employee role",
+                Errpassword:"* enter password",
             })
           }
           else if(createEmployee.password2.length ===0){
             setError({
-                Errpassword2:"* enter employee role",
+                Errpassword2:"* enter password again",
             })
           }
           else{
@@ -175,7 +182,7 @@ const CreateEmployee = () =>{
         <div className="mb-3">
             <label className="form-label">Email Id</label>
             <input name="email" className="form-control" type="text" aria-label="default input example" value={createEmployee.email} onChange={handleInput} />
-            <small style={{color:"red"}}>{error.Erremail}</small>
+            <small style={{color:"red"}}>{error.Erremail}{error.Validmail}</small>
         </div>
         <div className="mb-3">
             <label className="form-label">Password</label>

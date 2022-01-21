@@ -38,7 +38,6 @@ const Header = () =>{
       <li className="nav-item">
         <NavLink className="nav-link" to="/create_employee">Create Employee</NavLink>
       </li>
-      
     </ul>
       <button className="btn btn-danger" type="submit" onClick={logoutHabdle}>Logout</button>
   </div>
