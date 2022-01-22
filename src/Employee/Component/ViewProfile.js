@@ -51,10 +51,10 @@ const ViewProfile =()=>{
         <div className="show_emp">
         <h2>Profile</h2><br/>
         <p>Employee Code: {empData.employee_code}</p>
-        <p>Name : { empData.first_name } {empData.last_name}</p>
-        <p>Country : { empData.country_name }</p>
-        <p>Employee Role: {empData.employee_role}</p>
-        <p>Gender: {empData.gender}</p>
+        <p>Name : { empData.first_name.toUpperCase() } {empData.last_name.toUpperCase()}</p>
+        <p>Country : { empData.country_name.toUpperCase() }</p>
+        <p>Employee Role: {empData.employee_role.toUpperCase()}</p>
+        <p>Gender: {empData.gender.toUpperCase()}</p>
         <p>Email: {empData.email}</p>
         <p>Ph Number: {empData.phno}</p>
         <b/>
