@@ -68,12 +68,12 @@ const Login=()=>{
   <div className="container-sm" style={{padding:"200px"}}>
   <div className="mb-3">
     <label  className="form-label">Employee Code</label>
-    <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="employeecode" value={loginForm.employeecode} onChange={handleInput} style={{width:"350px"}}/>
+    <input autoComplete="off" type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="employeecode" value={loginForm.employeecode} onChange={handleInput} style={{width:"350px"}}/>
     <small style={{color:"red"}}>{error.empCodeValid}</small>
   </div>
   <div className="mb-3">
     <label  className="form-label">Password</label>
-    <input type="password" className="form-control" id="exampleInputPassword1" name="password" value={loginForm.password} onChange={handleInput} style={{width:"350px"}}/>
+    <input autoComplete="off" type="password" className="form-control" id="exampleInputPassword1" name="password" value={loginForm.password} onChange={handleInput} style={{width:"350px"}}/>
     <small style={{color:"red"}}>{error.passwordValid}</small>
   </div>
   <Link to="/forgetpass">Forget Password</Link>

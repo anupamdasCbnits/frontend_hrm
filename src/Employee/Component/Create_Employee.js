@@ -150,10 +150,16 @@ const CreateEmployee = () =>{
             <small style={{color:"red"}}>{error.Errlast_name}</small>
         </div>
         <div className="mb-3">
-            <label className="form-label">Country</label>
-            <input name="country_name" className="form-control" type="text" aria-label="default input example" value={createEmployee.country_name} onChange={handleInput} />
-            <small style={{color:"red"}}>{error.Errcountry_name}</small>
-        </div>
+        <label className="form-label">Select country</label>
+        <select name="country_name"
+        value={createEmployee.country_name} 
+        onChange={handleInput}  className="form-control"
+      >
+        <option value="">Select Country</option>
+       <option value="india">India</option>
+        <option value="usa">USA</option>
+      </select>
+      </div>
         <div className="mb-3">
             <label className="form-label">Employee Role</label>
             <input name="employee_role" className="form-control" type="text" aria-label="default input example" value={createEmployee.employee_role} onChange={handleInput}/>

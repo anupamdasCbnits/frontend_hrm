@@ -89,10 +89,16 @@ const UpdateEmployee =()=>{
 
         </div>
         <div className="mb-3">
-            <label className="form-label">Country</label>
-            <input name="country_name" className="form-control" type="text" aria-label="default input example" value={updateEmployee.country_name} onChange={handleInput} />
-            
-        </div>
+        <label className="form-label">Select country</label>
+        <select name="country_name"
+        value={updateEmployee.country_name} 
+        onChange={handleInput}  className="form-control"
+      >
+        <option value="">Select Country</option>
+       <option value="india">India</option>
+        <option value="usa">USA</option>
+      </select>
+      </div>
         <div className="mb-3">
             <label className="form-label">Employee Role</label>
             <input name="employee_role" className="form-control" type="text" aria-label="default input example" value={updateEmployee.employee_role} onChange={handleInput}/>

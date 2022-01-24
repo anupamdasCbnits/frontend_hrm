@@ -94,11 +94,11 @@ const ListEmployee =()=>{
       <>  
        <Header/>
        <div className="container-sm">
-       <div class="d-flex" style={{margin:"30px"}}>
-        <input autocomplete="off" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" value={search.search} onChange={handleInput} style={{width:"50%"}}/>
-        <button class="btn btn-outline-primary" type="button" onClick={handleSubmit} >Search</button>
+       <div className="d-flex" style={{margin:"30px"}}>
+        <input autoComplete="off" className="form-control me-3" type="search" placeholder="Search" aria-label="Search" name="search" value={search.search} onChange={handleInput} style={{width:"50%"}}/>
+        <button className="btn btn-outline-primary" type="button" onClick={handleSubmit} >Search</button>
       </div>
-       <div class="alert alert-primary" role="alert">
+       <div className="alert alert-primary" role="alert">
           no employee found
         </div>
         <br/><br/>
@@ -114,14 +114,14 @@ const ListEmployee =()=>{
     <>
     <Header/>
     <div className="container-sm">
-    <div class="d-flex" style={{margin:"30px"}}>
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" value={search.search} onChange={handleInput} style={{width:"50%"}}/>
-        <button class="btn btn-outline-primary" type="button" onClick={handleSubmit} >Search</button>
+    <div className="d-flex" style={{margin:"30px"}}>
+        <input autoComplete="off" className="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" value={search.search} onChange={handleInput} style={{width:"50%"}}/>
+        <button className="btn btn-outline-primary" type="button" onClick={handleSubmit} >Search</button>
       </div>
     <div className="row row-cols-1 row-cols-md-4 g-5 mx-3" >
       {
         empData.empList.map((item)=>
-        <div className="col">
+        <div key={item.employee_id} className="col">
         <div className="card text-dark bg-light border-primary mb-3">
         <div className="card-header text-primary"><b>{item.employee_role.toUpperCase()}</b></div>
           <Link className="card-body" to={"/show_employee/"+item.employee_id}>

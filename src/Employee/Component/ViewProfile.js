@@ -39,7 +39,7 @@ const ViewProfile =()=>{
         return(
             <>
             <Header/>
-            <div class="alert alert-primary" role="alert">
+            <div className="alert alert-primary" role="alert">
                 your token is invalid.
             </div>
             </>

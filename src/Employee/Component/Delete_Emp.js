@@ -18,7 +18,7 @@ const DeleteEmp = () =>{
           });
     }, [employee_id])
     setTimeout(() => {
-        navigate('/')
+        navigate('/list_employee')
     }, 300)
 
     return (
@@ -26,7 +26,7 @@ const DeleteEmp = () =>{
         <Header/>
         <div className="Delete">
             <h1>Delete success</h1>
-            <Link type="button" className="btn btn-info" to="/">Back to Home</Link>
+            <Link type="button" className="btn btn-info" to="/list_employee">Back to Emplist page</Link>
         </div>
         </>
     )
