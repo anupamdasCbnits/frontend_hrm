@@ -61,6 +61,9 @@ const UpdateProfile =()=>{
             event.preventDefault()
             
         }
+        const handleCancell = () =>{
+            navigate('/viewprofile')
+        }
             
     return(
         <>
@@ -113,7 +116,8 @@ const UpdateProfile =()=>{
             <input name="email" className="form-control" type="text" aria-label="default input example" value={updateEmployee.email} onChange={handleInput} />
            
         </div>
-        <input type="submit" value="Update Employee" style={{width:"200px"}}  className="btn btn-primary" onClick={handleSubmit}/>
+        <input type="submit" value="Cancel"  className="btn btn-danger" onClick={handleCancell}/>
+        <input type="submit" value="Update Employee"  className="btn btn-primary mx-5" onClick={handleSubmit}/>
         </div>
         </>)
 

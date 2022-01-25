@@ -1,7 +1,7 @@
 import React, {useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
-
+import "../Css/Login.css"
 
 const Login=()=>{
 
@@ -65,7 +65,8 @@ const Login=()=>{
       }
     }
   return(
-  <div className="container-sm" style={{padding:"200px"}}>
+  <div className="border">
+    <h2>Login Here</h2>
   <div className="mb-3">
     <label  className="form-label">Employee Code</label>
     <input autoComplete="off" type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="employeecode" value={loginForm.employeecode} onChange={handleInput} style={{width:"350px"}}/>
@@ -78,7 +79,7 @@ const Login=()=>{
   </div>
   <Link to="/forgetpass">Forget Password</Link>
   <br/><br/>
-  <input type="submit" value="Login" style={{width:"150px"}}  className="btn btn-primary" onClick={handleSubmit}/>
+  <input type="submit" value="Login" className="btn btn-primary login" onClick={handleSubmit}/>
 </div>
   )
 }

@@ -1,7 +1,6 @@
 import React,{useState} from "react";
 import Header from "../Component/Header"
 import "../Css/CreateEmp.css"
-import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import validator from 'validator'
 const CreateEmployee = () =>{
@@ -31,7 +30,6 @@ const CreateEmployee = () =>{
         Errpassword2 : "",
         Errgender : "",
     })
-    const navigate = useNavigate()
     const handleInput=(event) => {
         const target = event.target;
         const value = target.value;
@@ -106,24 +104,24 @@ const CreateEmployee = () =>{
             axios.post('http://127.0.0.1:5000/employee/',createEmpData,{headers:{
                 'x-access-token': localStorage.getItem('token')}})
             .then(response => {
-                navigate('/')
+                setCreateEmployee({
+                    country_name : "",
+                    first_name : "",
+                    last_name : "",
+                    employee_role : "",
+                    employee_code : "",
+                    email : "",
+                    phno : "",
+                    password : "",
+                    password2 : "",
+                    gender : "male",
+                })
             })
             .catch(error => {
             console.log(error);
             alert("wrong data entered")
             });
-            setCreateEmployee({
-                country_name : "",
-                first_name : "",
-                last_name : "",
-                employee_role : "",
-                employee_code : "",
-                email : "",
-                phno : "",
-                password : "",
-                password2 : "",
-                gender : "male",
-            })
+            
         }
         event.preventDefault();
     }
@@ -133,6 +131,7 @@ const CreateEmployee = () =>{
         <>
         <Header/>
         <div className="CreateEmpForm">
+
         <h2>Create Employee Form</h2><b/>
         <div className="mb-3">
             <label className="form-label">Employee Code</label>
