@@ -1,9 +1,11 @@
-import React, {useState } from "react";
+import React, {useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import "../Css/Login.css"
 
 const Login=()=>{
+
+  
 
   const [loginForm, setLoginForm] = useState({
           employeecode: "",
@@ -14,6 +16,17 @@ const Login=()=>{
     empCodeValid:"",
     passwordValid: "",
   })
+  useEffect(()=>{
+    if(loginForm.employeecode!==""){
+      setError({
+        empCodeValid:""
+      })
+    }else if(loginForm.password!==""){
+      setError({
+        empCodeValid:""
+      })
+    }
+  },[loginForm])
   // const [jwt, setJwt] = useState({
   //   token: "",
   // })
@@ -64,6 +77,7 @@ const Login=()=>{
         });
       }
     }
+
   return(
   <div className="border">
     <h2>Login Here</h2>
