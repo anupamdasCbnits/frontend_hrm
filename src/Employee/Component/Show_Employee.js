@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Header from './Header';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import "../Css/ShowEmp.css"
 import axios from 'axios';
+import swal from 'sweetalert';
 const ShowEmployee=() =>{
+    const navigate = useNavigate()
     const { employee_id } = useParams();
     const [empData,setEmpData]= useState({
         country_name:"",
@@ -36,6 +38,7 @@ const ShowEmployee=() =>{
             })
         })
       }, [employee_id]);
+      
     
     return(
         <>
@@ -50,7 +53,18 @@ const ShowEmployee=() =>{
         <p>Email: {empData.email}</p>
         <p>Ph Number: {empData.phno}</p>
         <b/>
-        <Link type="button" className="btn btn-danger" to={"/delete_employee/"+employee_id}>Delete</Link>
+        <button type="submit" className="btn btn-danger" onClick={()=>{
+            axios.delete(`http://127.0.0.1:5000/employee/${employee_id}`,{headers:{
+                        'x-access-token': localStorage.getItem('token')
+                    }}).then(response => {
+                        console.log(response.data)
+                        navigate('/list_employee')
+                        swal("Ok","successfully updated","success")
+                      })
+                      .catch(error => {
+                        console.log(error);
+                      });
+        }}>Delete</button>
         <Link type="button" className="btn btn-success" to={"/update_employee/"+employee_id}>Update</Link>
         </div>
         </>

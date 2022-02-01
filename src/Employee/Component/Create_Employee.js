@@ -3,6 +3,7 @@ import Header from "../Component/Header"
 import "../Css/CreateEmp.css"
 import axios from 'axios';
 import validator from 'validator'
+import swal from 'sweetalert';
 const CreateEmployee = () =>{
 
     const [createEmployee, setCreateEmployee] = useState({
@@ -116,10 +117,11 @@ const CreateEmployee = () =>{
                     password2 : "",
                     gender : "male",
                 })
+                swal("Ok","successfully created","success")
             })
             .catch(error => {
             console.log(error);
-            alert("wrong data entered")
+            swal("Ooops","wrong data entered","error")
             });
             
         }

@@ -2,6 +2,7 @@ import React, {useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import "../Css/Login.css"
+import swal from 'sweetalert';
 
 const Login=()=>{
 
@@ -73,7 +74,7 @@ const Login=()=>{
         })
         .catch(error => {
           console.log(error);
-          alert("wrong password or employee code")
+          swal("Ooops","wrong password or employee code","error")
         });
       }
     }
@@ -95,6 +96,7 @@ const Login=()=>{
   <br/><br/>
   <input type="submit" value="Login" className="btn btn-primary login" onClick={handleSubmit}/>
 </div>
+  
   )
 }
 

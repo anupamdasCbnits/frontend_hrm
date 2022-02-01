@@ -1,6 +1,7 @@
 import React, {useState}  from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import swal from 'sweetalert';
 const UpdatePass =()=>{
     const navigate = useNavigate()
     const { employee_id } = useParams();
@@ -46,6 +47,7 @@ const UpdatePass =()=>{
             .then(response => {
 
              navigate('/login')
+             swal("Ok","change successfull","success")
             })
             .catch(error => {
                 console.log(error);

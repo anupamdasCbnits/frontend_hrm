@@ -97,32 +97,73 @@ const ListEmployee =()=>{
           setEmpDta({
             empList:[]
           })
-          axios.get(`http://127.0.0.1:5000/employee/${search.search}/${pagination.previous}/${pagination.next}`,{headers:{
-        'x-access-token': localStorage.getItem('token')
-        }}).then(data => {
-          console.log(data.data)
-        const empListData = []
-        for(let item in data.data){
-            const empObj = {
-            employee_id:"",
-            country_name:"",
-            first_name:"",
-            last_name:"",
-            employee_code:"",
-            employee_role:""
+          if (pagination.previous>=0){
+            if(search.search.length===0){
+              axios.get(`http://127.0.0.1:5000/employee/""/${pagination.previous}/${pagination.next}`,{headers:{
+            'x-access-token': localStorage.getItem('token')
+            }}).then(data => {
+              console.log(data.data)
+            const empListData = []
+            for(let item in data.data){
+                const empObj = {
+                employee_id:"",
+                country_name:"",
+                first_name:"",
+                last_name:"",
+                employee_code:"",
+                employee_role:""
+                }
+                empObj.employee_id=data.data[item].employee_id
+                empObj.country_name=data.data[item].country_name
+                empObj.first_name=data.data[item].first_name
+                empObj.last_name=data.data[item].last_name
+                empObj.employee_code=data.data[item].employee_code
+                empObj.employee_role=data.data[item].employee_role
+          
+                empListData.push(empObj)
             }
-            empObj.employee_id=data.data[item].employee_id
-            empObj.country_name=data.data[item].country_name
-            empObj.first_name=data.data[item].first_name
-            empObj.last_name=data.data[item].last_name
-            empObj.employee_code=data.data[item].employee_code
-            empObj.employee_role=data.data[item].employee_role
-      
-            empListData.push(empObj)
             setEmpDta({
-              empList:empListData
-          })
-        }})
+                empList:empListData
+            })
+        })
+            }
+            else{
+              axios.get(`http://127.0.0.1:5000/employee/${search.search}/${pagination.previous}/${pagination.next}`,{headers:{
+            'x-access-token': localStorage.getItem('token')
+            }}).then(data => {
+              console.log(data.data)
+            const empListData = []
+            for(let item in data.data){
+                const empObj = {
+                employee_id:"",
+                country_name:"",
+                first_name:"",
+                last_name:"",
+                employee_code:"",
+                employee_role:""
+                }
+                empObj.employee_id=data.data[item].employee_id
+                empObj.country_name=data.data[item].country_name
+                empObj.first_name=data.data[item].first_name
+                empObj.last_name=data.data[item].last_name
+                empObj.employee_code=data.data[item].employee_code
+                empObj.employee_role=data.data[item].employee_role
+          
+                empListData.push(empObj)
+            }
+    
+            setEmpDta({
+                empList:empListData
+            })
+        })
+            }
+            
+          }else{
+            Setpagination({
+              previous: 0,
+              next: 4
+            })
+          }
         event.preventDefault();
         
         }

@@ -3,6 +3,7 @@ import Header from "../Component/Header"
 import "../Css/CreateEmp.css"
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import swal from 'sweetalert';
 const UpdateProfile =()=>{
     const navigate = useNavigate()
     const [updateEmployee, setUpdateEmployee] = useState({
@@ -53,6 +54,7 @@ const UpdateProfile =()=>{
                 'x-access-token': localStorage.getItem('token')}})
             .then(response => {
                 navigate('/viewprofile')
+                swal("Ok","successfully updated","success")
             })
             .catch(error => {
             console.log(error);

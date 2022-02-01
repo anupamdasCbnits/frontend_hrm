@@ -3,6 +3,7 @@ import Header from "../Component/Header"
 import "../Css/CreateEmp.css"
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import swal from 'sweetalert';
 const UpdateEmployee =()=>{
     const navigate = useNavigate()
     const { employee_id } = useParams();
@@ -58,6 +59,7 @@ const UpdateEmployee =()=>{
                 'x-access-token': localStorage.getItem('token')}})
             .then(response => {
                 navigate('/show_employee/'+employee_id)
+                swal("Ok","successfully updated","success")
             })
             .catch(error => {
             console.log(error);
