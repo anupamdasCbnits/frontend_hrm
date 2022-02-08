@@ -121,7 +121,7 @@ const CreateEmployee = () =>{
             })
             .catch(error => {
             console.log(error);
-            swal("Ooops","wrong data entered","error")
+            swal("Ooops",error.response.data.massage,"error")
             });
             
         }

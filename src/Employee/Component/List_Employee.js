@@ -18,9 +18,9 @@ const ListEmployee =()=>{
     useEffect(  () => {
       if (pagination.previous>=0){
         if(search.search.length===0){
-          axios.get(`http://127.0.0.1:5000/employee/""/${pagination.previous}/${pagination.next}`,{headers:{
+          axios.get("http://127.0.0.1:5000/employee/", {headers:{
         'x-access-token': localStorage.getItem('token')
-        }}).then(data => {
+        },params: { 'lower': pagination.previous, 'upper': pagination.next}}).then(data => {
           console.log(data.data)
         const empListData = []
         for(let item in data.data){
@@ -47,9 +47,9 @@ const ListEmployee =()=>{
     })
         }
         else{
-          axios.get(`http://127.0.0.1:5000/employee/${search.search}/${pagination.previous}/${pagination.next}`,{headers:{
+          axios.get("http://127.0.0.1:5000/employee/",{headers:{
         'x-access-token': localStorage.getItem('token')
-        }}).then(data => {
+        },params: { 'lower': pagination.previous, 'upper': pagination.next, 'search': search.search}}).then(data => {
           console.log(data.data)
         const empListData = []
         for(let item in data.data){
@@ -99,9 +99,9 @@ const ListEmployee =()=>{
           })
           if (pagination.previous>=0){
             if(search.search.length===0){
-              axios.get(`http://127.0.0.1:5000/employee/""/${pagination.previous}/${pagination.next}`,{headers:{
+              axios.get("http://127.0.0.1:5000/employee/",{headers:{
             'x-access-token': localStorage.getItem('token')
-            }}).then(data => {
+            },params: { 'lower': pagination.previous, 'upper': pagination.next}}).then(data => {
               console.log(data.data)
             const empListData = []
             for(let item in data.data){
@@ -128,9 +128,9 @@ const ListEmployee =()=>{
         })
             }
             else{
-              axios.get(`http://127.0.0.1:5000/employee/${search.search}/${pagination.previous}/${pagination.next}`,{headers:{
+              axios.get("http://127.0.0.1:5000/employee/",{headers:{
             'x-access-token': localStorage.getItem('token')
-            }}).then(data => {
+            },params: { 'lower': pagination.previous, 'upper': pagination.next, 'search': search.search}}).then(data => {
               console.log(data.data)
             const empListData = []
             for(let item in data.data){

@@ -53,12 +53,12 @@ const UpdateProfile =()=>{
             axios.put(`http://127.0.0.1:5000/employee/`,updateEmpData,{headers:{
                 'x-access-token': localStorage.getItem('token')}})
             .then(response => {
-                navigate('/viewprofile')
                 swal("Ok","successfully updated","success")
+                navigate('/viewprofile') 
             })
             .catch(error => {
             console.log(error);
-            alert("wrong data entered")
+            swal("Ooops",error.response.data.massage,"error")
             });
             event.preventDefault()
             

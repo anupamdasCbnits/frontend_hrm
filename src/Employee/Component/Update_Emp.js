@@ -58,12 +58,12 @@ const UpdateEmployee =()=>{
             axios.put(`http://127.0.0.1:5000/employee/${employee_id}`,updateEmpData,{headers:{
                 'x-access-token': localStorage.getItem('token')}})
             .then(response => {
-                navigate('/show_employee/'+employee_id)
                 swal("Ok","successfully updated","success")
+                navigate('/show_employee/'+employee_id)
             })
-            .catch(error => {
-            console.log(error);
-            alert("wrong data entered")
+            .catch((error) => {
+            console.log(error.response.data);
+            swal("Ooops",error.response.data.massage,"error")
             });
         
             event.preventDefault()

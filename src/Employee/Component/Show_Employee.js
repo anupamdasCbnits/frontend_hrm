@@ -43,6 +43,7 @@ const ShowEmployee=() =>{
     return(
         <>
         <Header/>
+        <Link className="btn btn-light" style={{margin:"30px"}} to={'/list_employee'}>Back</Link>
         <div className="show_emp">
         <h2>Employee Data</h2><br/>
         <p>Employee Code: {empData.employee_code}</p>
@@ -54,16 +55,47 @@ const ShowEmployee=() =>{
         <p>Ph Number: {empData.phno}</p>
         <b/>
         <button type="submit" className="btn btn-danger" onClick={()=>{
-            axios.delete(`http://127.0.0.1:5000/employee/${employee_id}`,{headers:{
-                        'x-access-token': localStorage.getItem('token')
-                    }}).then(response => {
-                        console.log(response.data)
-                        navigate('/list_employee')
-                        swal("Ok","successfully updated","success")
-                      })
-                      .catch(error => {
-                        console.log(error);
-                      });
+
+swal({
+    title: "Are you sure?",
+    text: "You want to delete the employee!",
+    icon: "warning",
+    buttons: [
+      'No, cancel it!',
+      'Yes, I am sure!'
+    ],
+    dangerMode: true,
+  }).then(function(isConfirm) {
+    if (isConfirm) {
+        axios.delete(`http://127.0.0.1:5000/employee/${employee_id}`,{headers:{
+            'x-access-token': localStorage.getItem('token')
+        }}).then(response => {
+            console.log(response.data)
+            swal("Ok","successfully deleted","success")
+            navigate('/list_employee')
+          })
+          .catch(error => {
+            console.log(error);
+          });
+    } else {
+      swal("Cancelled", "You cancel deletetion", "error");
+    }
+  })
+
+
+            // if(window.confirm('Do you want to delete this empolyee?')){
+            //     axios.delete(`http://127.0.0.1:5000/employee/${employee_id}`,{headers:{
+            //             'x-access-token': localStorage.getItem('token')
+            //         }}).then(response => {
+            //             console.log(response.data)
+            //             navigate('/list_employee')
+            //             swal("Ok","successfully updated","success")
+            //           })
+            //           .catch(error => {
+            //             console.log(error);
+            //           });
+            // }
+            
         }}>Delete</button>
         <Link type="button" className="btn btn-success" to={"/update_employee/"+employee_id}>Update</Link>
         </div>
