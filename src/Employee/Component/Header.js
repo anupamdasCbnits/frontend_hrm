@@ -55,7 +55,7 @@ const Header = () =>{
           </a>
           <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><NavLink className="dropdown-item" to="/applyleave">Apply For Leave</NavLink></li>
-            <li><NavLink className="dropdown-item" to="/showleave">Show Leave Status</NavLink></li>
+            <li><NavLink className="dropdown-item" to="/showleave">Show all Leave</NavLink></li>
           </ul>
         </li>
     </ul>
@@ -81,6 +81,15 @@ const Header = () =>{
       <li className="nav-item">
         <NavLink className="nav-link" aria-current="page" to="/viewprofile" >View Profile</NavLink>
       </li>
+      <li className="nav-item dropdown">
+          <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Leave Section
+          </a>
+          <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><NavLink className="dropdown-item" to="/applyleave">Apply For Leave</NavLink></li>
+            <li><NavLink className="dropdown-item" to="/showleave">Show My Leaves</NavLink></li>
+          </ul>
+        </li>
     </ul>
       <button className="btn btn-danger" type="submit" onClick={logoutHabdle}>Logout</button>
   </div>

@@ -105,6 +105,20 @@ const CreateEmployee = () =>{
             axios.post('http://127.0.0.1:5000/employee/',createEmpData,{headers:{
                 'x-access-token': localStorage.getItem('token')}})
             .then(response => {
+                var addleave = new FormData()
+                addleave.append('employee_id',response.data.employee_id)
+                addleave.append('alloted_leave',15)
+                axios.post('http://127.0.0.1:5000//leave/addleave_allotment',addleave,{headers:{
+                    'x-access-token': localStorage.getItem('token')}})
+            .then(result=>{
+                console.log(result.data)
+            }).catch(error=>{
+                alert(error.response.data.message)
+                })
+                .catch(error => {
+                console.log(error);
+                swal("Ooops",error.response.data.massage,"error")
+                })
                 setCreateEmployee({
                     country_name : "",
                     first_name : "",
@@ -123,6 +137,7 @@ const CreateEmployee = () =>{
             console.log(error);
             swal("Ooops",error.response.data.massage,"error")
             });
+
             
         }
         event.preventDefault();

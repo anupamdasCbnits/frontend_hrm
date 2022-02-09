@@ -6,7 +6,7 @@ import Header from "../Component/Header"
 
 const Leavespan =()=>{
 
-    const { emptype } = useParams();
+    
 
     const navigate = useNavigate()
 
@@ -44,25 +44,7 @@ const Leavespan =()=>{
         }).catch(error=>{
             alert(error.response.data.massage)
         })
-        console.log(localStorage.getItem('leave_span_id'))
-        console.log(localStorage.getItem('leave_type_id'))
-        if (emptype === 'new'){
-            var addleave = new FormData()
-            addleave.append('employee_id',localStorage.getItem('employee_id'))
-            addleave.append('leave_span_id',localStorage.getItem('leave_span_id'))
-            addleave.append('leave_type_id',localStorage.getItem('leave_type_id'))
-            addleave.append('alloted_leave',15)
-            axios.post('http://127.0.0.1:5000//leave/addleave_allotment',addleave,{headers:{
-                'x-access-token': localStorage.getItem('token')}})
-        .then(result=>{
-            console.log(result.data)
-            navigate('/leaveallot')
-        }).catch(error=>{
-            alert(error.response.data.message)
-        })
-        }else{
-            navigate('/leaveallot')
-        }
+        navigate('/leaveallot')
         event.preventDefault();
     }
     

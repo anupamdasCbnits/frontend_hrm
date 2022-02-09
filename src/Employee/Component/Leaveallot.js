@@ -27,9 +27,11 @@ const Leaveallot =()=>{
                 'x-access-token': localStorage.getItem('token')}})
                 .then(response=>{
                     console.log(response.data)
+                    navigate('/showleave')
                 }).catch(error=>{
                     alert(error.response.data.message)
                 })
+        
         event.preventDefault()
     }
 

@@ -16,6 +16,7 @@ const Leavespan= React.lazy(() => import('../Employee/Component/Leave_span'));
 const Applyleave = React.lazy(() => import('../Employee/Component/Apply_Leave'));
 const Showleave= React.lazy(() => import('../Employee/Component/Show_Leave'));
 const Leaveallot= React.lazy(() => import('../Employee/Component/Leaveallot'));
+const Pendingleave= React.lazy(() => import('../Employee/Component/Pendingleave'));
 function Routers() {
   return (
   <>
@@ -32,10 +33,11 @@ function Routers() {
           <Route exact path='/update_employee/:employee_id' element={< UpdateEmployee />}></Route>
           <Route exact path='/viewprofile' element={< ViewProfile />}></Route>
           <Route exact path='/updateprofile' element={< UpdateProfile />}></Route>
-          <Route exact path='/leavespann/:emptype' element={< Leavespan />}></Route>
+          <Route exact path='/leavespann' element={< Leavespan />}></Route>
           <Route exact path='/applyleave' element={< Applyleave />}></Route>
           <Route exact path='/showleave' element={< Showleave />}></Route>
           <Route exact path='/leaveallot' element={< Leaveallot />}></Route>
+          <Route exact path='/pendingleave' element={< Pendingleave />}></Route>
       </Route>
     </Routes>
   </>
