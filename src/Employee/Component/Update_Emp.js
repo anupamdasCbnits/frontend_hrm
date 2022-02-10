@@ -63,7 +63,7 @@ const UpdateEmployee =()=>{
             })
             .catch((error) => {
             console.log(error.response.data);
-            swal("Ooops",error.response.data.massage,"error")
+            swal("Ooops",error.response.data.message,"error")
             });
         
             event.preventDefault()

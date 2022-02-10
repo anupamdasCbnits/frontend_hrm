@@ -1,6 +1,6 @@
 import React, { useState }  from "react";
 import Header from "../Component/Header"
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import "../Css/leaveallot.css"
 import axios from 'axios';
 
@@ -48,6 +48,16 @@ const Leaveallot =()=>{
   <textarea className="form-control" rows="4" name="description" value={data.description} onChange={handleChange}></textarea>
 </div>
 <button className="btn btn-danger" onClick={()=>{
+            axios.delete(`http://127.0.0.1:5000/leave/deleteLeavespan/${localStorage.getItem('leave_span_id')}`,{headers:{
+                'x-access-token': localStorage.getItem('token')}})
+                .then(response=>{}).catch(error=>{
+                    alert(error)
+                })
+                axios.delete(`http://127.0.0.1:5000/leave/deleteLeavetype/${localStorage.getItem('leave_type_id')}`,{headers:{
+                'x-access-token': localStorage.getItem('token')}})
+                .then(response=>{}).catch(error=>{
+                    alert(error)
+                })
             navigate('/applyleave')
         }}>back</button>
   <button type="submit" className="btn btn-primary click" onClick={handleSubmit}>Submit</button>

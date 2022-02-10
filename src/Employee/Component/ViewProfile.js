@@ -30,7 +30,7 @@ const ViewProfile =()=>{
                 first_name:data.data.first_name,
                 gender:data.data.gender,
                 last_name:data.data.last_name,
-                massage:data.data.massage,
+                massage:data.data.message,
                 phno:data.data.phno
             })
         })

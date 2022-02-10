@@ -17,6 +17,8 @@ const Applyleave = React.lazy(() => import('../Employee/Component/Apply_Leave'))
 const Showleave= React.lazy(() => import('../Employee/Component/Show_Leave'));
 const Leaveallot= React.lazy(() => import('../Employee/Component/Leaveallot'));
 const Pendingleave= React.lazy(() => import('../Employee/Component/Pendingleave'));
+const Allleaves= React.lazy(() => import('../Employee/Component/All_leaves'));
+const Seeallotment= React.lazy(() => import('../Employee/Component/Seeallotment'));
 function Routers() {
   return (
   <>
@@ -38,6 +40,8 @@ function Routers() {
           <Route exact path='/showleave' element={< Showleave />}></Route>
           <Route exact path='/leaveallot' element={< Leaveallot />}></Route>
           <Route exact path='/pendingleave' element={< Pendingleave />}></Route>
+          <Route exact path='/all_leaves' element={< Allleaves />}></Route>
+          <Route exact path='/seeallotment' element={< Seeallotment />}></Route>
       </Route>
     </Routes>
   </>

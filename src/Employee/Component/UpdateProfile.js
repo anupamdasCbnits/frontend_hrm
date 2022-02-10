@@ -58,7 +58,7 @@ const UpdateProfile =()=>{
             })
             .catch(error => {
             console.log(error);
-            swal("Ooops",error.response.data.massage,"error")
+            swal("Ooops",error.response.data.message,"error")
             });
             event.preventDefault()
             
