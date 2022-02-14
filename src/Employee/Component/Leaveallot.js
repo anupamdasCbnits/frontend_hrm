@@ -8,7 +8,9 @@ const Leaveallot =()=>{
     const navigate = useNavigate()
     const [data,setdata] = useState({
         description:"",
-        leave_days:""
+    })
+    const [error,setError] = useState({
+        errordescription:""
     })
     const handleChange = (event) =>{
         const target = event.target;
@@ -17,12 +19,17 @@ const Leaveallot =()=>{
         setdata({...data, [name]: value})
     }
     const handleSubmit =(event)=>{
+        if(data.description.length === 0){
+            setError({
+                errordescription: "enter description"
+            })
+        }else{
         var addapplication = new FormData()
         addapplication.append('employee_id',localStorage.getItem('employee_id'))
         addapplication.append('leave_span_id',localStorage.getItem('leave_span_id'))
         addapplication.append('leave_type_id',localStorage.getItem('leave_type_id'))
         addapplication.append('description',data.description)
-        addapplication.append('leave_days',data.leave_days)
+        // addapplication.append('leave_days',data.leave_days)
         axios.post('http://127.0.0.1:5000/leave/application',addapplication,{headers:{
                 'x-access-token': localStorage.getItem('token')}})
                 .then(response=>{
@@ -31,7 +38,7 @@ const Leaveallot =()=>{
                 }).catch(error=>{
                     alert(error.response.data.message)
                 })
-        
+            }
         event.preventDefault()
     }
 
@@ -39,14 +46,16 @@ const Leaveallot =()=>{
         <>
         <Header/>
         <div className="leavealot">
-        <div className="mb-3">
+        {/* <div className="mb-3">
   <label className="form-label">Enter Leave Days (How many das you want to leave)</label>
     <input type="text" className="form-control" name="leave_days" value={data.leave_days} onChange={handleChange}/>
-</div>
+</div> */}
 <div className="mb-3">
   <label className="form-label">Write The cause for leave</label>
   <textarea className="form-control" rows="4" name="description" value={data.description} onChange={handleChange}></textarea>
+  <small style={{color:"red"}}>{error.errordescription}</small>
 </div>
+
 <button className="btn btn-danger" onClick={()=>{
             axios.delete(`http://127.0.0.1:5000/leave/deleteLeavespan/${localStorage.getItem('leave_span_id')}`,{headers:{
                 'x-access-token': localStorage.getItem('token')}})

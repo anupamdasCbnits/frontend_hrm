@@ -81,8 +81,8 @@ const Showleave =()=>{
             <td>{item.employee_code}</td>
             <td>{item.first_name} {item.last_name}</td>
             <td>{item.leave_type}</td>
-            <td>{item.from_date.slice(0, 17)}</td>
-            <td>{item.to_date.slice(0, 17)}</td>
+            <td>{item.from_date.slice(0, 17)} {item.from_time}</td>
+            <td>{item.to_date.slice(0, 17)} {item.to_time}</td>
             <td>{item.description}</td>
             <td>{item.leave_days}</td>
             <td>{item.leave_status}</td>

@@ -67,7 +67,12 @@ swal({
     dangerMode: true,
   }).then(function(isConfirm) {
     if (isConfirm) {
-        axios.delete(`http://127.0.0.1:5000/employee/${employee_id}`,{headers:{
+
+      axios.delete(`http://127.0.0.1:5000/leave/deleteLeaveallot/${employee_id}`,{headers:{
+            'x-access-token': localStorage.getItem('token')
+        }}).then(response => {
+            console.log(response.data)
+            axios.delete(`http://127.0.0.1:5000/employee/${employee_id}`,{headers:{
             'x-access-token': localStorage.getItem('token')
         }}).then(response => {
             console.log(response.data)
@@ -77,6 +82,11 @@ swal({
           .catch(error => {
             console.log(error);
           });
+          })
+          .catch(error => {
+            console.log(error);
+          });
+        
     } else {
       swal("Cancelled", "You cancel deletetion", "error");
     }
