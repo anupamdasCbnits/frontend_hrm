@@ -45,7 +45,7 @@ const Pendingleave =()=>{
   <tbody>
       {
         leavedata.dataList.map((item,index)=>
-            <tr>
+            <tr key={item.id}>
             <th scope="row">{index+1}</th>
             <td>{item.employee_code}</td>
             <td>{item.first_name} {item.last_name}</td>
